@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NanoURL | Premium URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="NanoURL is a fast, secure, and beautiful URL shortener built with Flask and SQLite.">
+</head>
+<body>
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="container">
+        <div class="glass-card">
+            <h1>NanoURL</h1>
+            <p class="subtitle">Simplify your links with elegance.</p>
+            
+            <form action="/" method="post">
+                <div class="input-group">
+                    <input type="text" name="url" placeholder="Paste your long URL here..." required id="url-input">
+                </div>
+                <button type="submit" id="shorten-btn">Shorten Link</button>
+            </form>
+
+            {% if short_url %}
+            <div class="result-box" id="result-box">
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Your shortened URL:</p>
+                <a href="{{ short_url }}" target="_blank" id="shortened-link">{{ short_url }}</a>
+                <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const link = document.getElementById('shortened-link').innerText;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
