@@ -8,7 +8,7 @@ NanoURL is a premium, lightweight URL shortener built with **Flask** and **SQLit
 - **Glassmorphism UI**: Beautiful, responsive design with smooth animations.   
 - **SEO Optimized**: Meta tags and semantic HTML for better visibility.
  
-## 🛠️ Mapping Logic   
+## 🛠️ Mapping Logic    
 The core redirection logic follows a simple but effective process:
 1. **Input Validation**: Ensures the URL is properly formatted. 
 2. **Slug Generation**: A unique 6-character alphanumeric string (slug) is generated using `string.ascii_letters` and `string.digits`.
